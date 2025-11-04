@@ -29,9 +29,16 @@ insert into Courses(course_code ,course_name ,credit_hours ,program_id ,lecturer
 insert into Enrollments(student_id,course_id,semester,grade) values
 (1, 1, 'Jan-Apr', 3.8),
 (1, 2, 'May-AUg', 3.6),
-(2, 1, 'Jan-Apr', 3.2),
+(2, 1, 'Jan-Apr', 3.2), 
 (3, 3, 'Jan-Apr', 4.0),
 (4, 4, 'May-AUg',3.9 );
+
+INSERT INTO Fees (student_id, amount, AmountPaid, Balance, date_paid, payment_mode)
+VALUES
+  (1, 120000, 80000, 40000, '2023-02-10', 'Mpesa'),
+  (2, 70000, 70000, 0, '2023-07-05', 'Bank'),
+  (3, 100000, 60000, 40000, '2023-03-12', 'Cash');
+
 
 INSERT INTO LecturerProfiles (lecturer_id, profile_data)
 VALUES
@@ -45,5 +52,23 @@ VALUES
     'Specialization', 'Cybersecurity',
     'Research_Areas', JSON_ARRAY('Network Security', 'Cryptography')
 ));
+
+INSERT INTO Exams (student_id, Marks, course_id)
+VALUES
+  (1, 78.50, 1),
+  (1, 82.00, 2),
+  (2, 65.75, 3),
+  (2, 70.25, 4),
+  (3, 88.00, 1),
+  (4, 74.50, 2),
+  (4, 79.00, 3);
+
+  
+  INSERT INTO Borrow (student_id, book_title, borrow_date, return_date)
+VALUES
+  (1, 'Database Systems', '2024-01-15', '2024-02-15'),
+  (2, 'Operating Systems', '2024-03-10', NULL),
+  (3, 'Computer Networks', '2024-04-01', '2024-04-20'),
+  (4, 'Data Structures', '2024-05-05', NULL);
 
 
