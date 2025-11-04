@@ -65,14 +65,19 @@ foreign key (course_id ) references Courses(course_id)
 );
 
 -- Fees
+
 create table Fees(
 fee_id int auto_increment primary key,
 student_id int,
-amoount decimal(10,2),
+amount decimal(10,2),
 date_paid date,
 payment_mode varchar(30),
 foreign key (student_id ) references Students(student_id)
 );
+
+ALTER TABLE Fees
+  ADD COLUMN AmountPaid DECIMAL(10,2),
+  ADD COLUMN Balance DECIMAL(10,2);
 
 -- Class Schedules
 create table ClassSchedules(
@@ -103,6 +108,27 @@ timestamp datetime,
 foreign key (student_id ) references Students(student_id)
 );
 
+CREATE TABLE Exams (
+  ExamID INT AUTO_INCREMENT PRIMARY KEY,
+  student_id INT,
+  Marks DECIMAL(5,2),
+  FOREIGN KEY (student_id) REFERENCES Students(student_id)
+  );
+
+ALTER TABLE Exams
+ADD COLUMN course_id INT,
+ADD CONSTRAINT fk_course
+FOREIGN KEY (course_id) REFERENCES Courses(course_id);
+
+
+  CREATE TABLE Borrow (
+  BorrowID INT AUTO_INCREMENT PRIMARY KEY,
+  student_id INT,
+  book_title VARCHAR(100),
+  borrow_date DATE,
+  return_date DATE,
+  FOREIGN KEY (student_id) REFERENCES Students(student_id)
+);
 
 
 
